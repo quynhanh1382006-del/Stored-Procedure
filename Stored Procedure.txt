@@ -1,0 +1,37 @@
+```sql
+USE classicmodels;
+
+-- Bài 1: Tạo Stored Procedure hiển thị tất cả khách hàng
+DROP PROCEDURE IF EXISTS findAllCustomers;
+
+DELIMITER //
+
+CREATE PROCEDURE findAllCustomers()
+BEGIN
+    SELECT *
+    FROM customers;
+END //
+
+DELIMITER ;
+
+-- Gọi Stored Procedure
+CALL findAllCustomers();
+
+
+-- Bài 2: Tạo Stored Procedure tìm khách hàng theo mã
+DROP PROCEDURE IF EXISTS findCustomerByNumber;
+
+DELIMITER //
+
+CREATE PROCEDURE findCustomerByNumber(IN p_customerNumber INT)
+BEGIN
+    SELECT *
+    FROM customers
+    WHERE customerNumber = p_customerNumber;
+END //
+
+DELIMITER ;
+
+-- Gọi thủ tục tìm khách hàng có mã 175
+CALL findCustomerByNumber(175);
+```
